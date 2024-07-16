@@ -7,7 +7,7 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 export async function getOrg(request: FastifyRequest, reply: FastifyReply) {
 	try {
 		const getOrgProfile = makeGetOrgUseCase();
-
+		console.log(request.user.sub);
 		const { org } = await getOrgProfile.execute({ 
 			org_id: request.user.sub
 		});

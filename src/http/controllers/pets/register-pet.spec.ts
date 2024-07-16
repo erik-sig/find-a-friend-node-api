@@ -16,7 +16,7 @@ describe('Register pet (e2e)', ()=>{
 
 	it('should be able to register a pet', async ()=>{
 		const { token } = await createAndAuthenticateUser(app);
-		console.log(token);
+		
 		const profileResponse = await request(app.server).get('/me').set('Authorization', `Bearer ${token}`).send();
 
 		const petDataTest = {

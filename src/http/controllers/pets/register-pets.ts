@@ -21,11 +21,12 @@ export async function registerPets(request: FastifyRequest, reply: FastifyReply)
 		const registerPetUseCase = makeRegisterPetUseCase();
 
 		await registerPetUseCase.execute({...petData, org_id: authorizedOrgId});
+
+		return reply.status(201).send();
 	} catch (error) {
 		if(error instanceof OrgAlreadyExistsError) //TODO: verify possible error to register a pet and replace this one
 			return reply.status(409).send({message: error.message});
 		
 		throw error;
 	}
-	return reply.status(201).send('Sucesso ao cadastrar PET.');
 }

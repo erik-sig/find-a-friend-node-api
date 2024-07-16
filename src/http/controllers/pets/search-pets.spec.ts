@@ -50,9 +50,7 @@ describe('Search for pets (e2e)', ()=>{
 		const queryPetsResponse = await request(app.server).get('/pets').query({
 			city:'Sao Paulo',
 			energy_level: 'Alto'
-		}).set('Authorization', `Bearer ${token}`).send();
-
-		console.log(queryPetsResponse.body.pets);
+		}).send();
 
 		expect(queryPetsResponse.statusCode).toEqual(200);
 		expect(queryPetsResponse.body.pets).toHaveLength(1);
